@@ -5,6 +5,7 @@ const db = require('./lib/db.js');
 const matchups = require('./lib/matchups.js');
 const trades = require('./lib/trades.js');
 const { resolve } = require('path');
+const draft = require('./lib/draft.js');
 
 const baseUrl = 'https://fantasy.nfl.com/league/33863/history';
 const screenshotPath = 'screenshots/';
@@ -49,18 +50,26 @@ async function main() {
         await managers.push(await teams.get(page, year));
         await page.waitForTimeout(2000);
     }
-
+    
     // Update teams in DB
+    console.log('CREATE AND UPDATE TEAMS');
     await teams.createAndUpdateTeams(mysql, managers);
 
     // Download all weekly player stats into DB
+    console.log('DOWNLOAD ALL WEEKLY PLAYER STATS');
     await teams.downloadAllWeeklyPlayerStats(mysql, page, baseUrl, managers);
 
     // Download all player matchups into DB
+    console.log('DOWNLOAD ALL WEEKLY MATCHUPS');
     await matchups.downloadAllMatchups(mysql, page, baseUrl, managers);
 
     // Download all trades into DB
+    console.log('DOWNLOAD ALL TRADES');
     await trades.downloadAllTrades(mysql, page, baseUrl, firstYear, lastYear);
+
+    // Download all draft results into DB
+    console.log('DOWNLOAD ALL DRAFT RESULTS');
+    await draft.downloadAllDraftResults(mysql, page, baseUrl, firstYear, lastYear);
 
     await browser.close();
     console.log('Browser instance closed.');
