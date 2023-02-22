@@ -11,7 +11,7 @@ const baseUrl = 'https://fantasy.nfl.com/league/33863/history';
 const screenshotPath = 'screenshots/';
 
 const firstYear = 2010;
-const lastYear = 2021;
+const lastYear = 2022;
 
 async function main() {
     const mysql = db.makeDb();
