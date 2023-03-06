@@ -12,3 +12,7 @@ Long, but fairly self-explanatory title
   npm install
   node main.js
   ```
+
+## To-do Things
+
+https://trello.com/b/IQhQZvf0/nerdherd-fantasy-football
