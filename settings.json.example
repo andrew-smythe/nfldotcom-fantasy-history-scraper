@@ -1,0 +1,14 @@
+{
+    "firstYear": 2010,
+    "lastYear": 2022,
+
+    "nflUsername": "[nfldotcom_username]",
+    "nflPassword": "[nfldotcom_password]",
+
+    "db": {
+        "host": "[mysql_host]",
+        "user": "[mysql_username]",
+        "password": "[mysql_password]",
+        "database": "[mysql_db_name]"
+    }
+}
