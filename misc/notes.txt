@@ -1,8 +1,0 @@
-Potential Flow:
-
-- Scrape all rosters and starting lineups from NFL Fantasy			** mostly done
-- Backend API endpoint to get player's stats for a given week:
-	- checks local DB first for stats/player info
-	- If local entry does not exist:
-		- scrape Pro Football Reference
-		- save to local DB for future use

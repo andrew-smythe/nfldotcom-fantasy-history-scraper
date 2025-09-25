@@ -27,7 +27,9 @@ If you did want to use it on a different league, this probably would be a good b
 
 3. Create a settings.json file. See settings.json.example for an example of which fields are needed. This is required for the script to run correctly.
 
-4. Run the following:
+4. Create a screenshots folder in the root directory of this project.
+
+5. Run the following:
   ```bash
   npm install
   node main.js
