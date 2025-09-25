@@ -32,3 +32,7 @@ If you did want to use it on a different league, this probably would be a good b
   npm install
   node main.js
   ```
+
+## To-do Things
+
+https://trello.com/b/IQhQZvf0/nerdherd-fantasy-football
