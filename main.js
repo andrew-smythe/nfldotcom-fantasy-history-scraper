@@ -6,6 +6,7 @@ const matchups = require('./lib/matchups.js');
 const trades = require('./lib/trades.js');
 const { resolve } = require('path');
 const draft = require('./lib/draft.js');
+const leagueSettings = require('./lib/settings.js');
 const fs = require('fs');
 
 const baseUrl = 'https://fantasy.nfl.com/league/33863/history';
@@ -58,6 +59,10 @@ async function main() {
                 await page.screenshot({ path: screenshotPath + 'teams-' + year + '.png', fullPage: true });
             }
 
+            // Get league settings
+            console.log('DOWNLOAD LEAGUE SETTINGS');
+            await leagueSettings.downloadAllSettings(mysql, page, baseUrl, settings.firstYear, settings.lastYear);
+
             // Update teams in DB
             console.log('CREATE AND UPDATE TEAMS');
             await teams.createAndUpdateTeams(mysql, managers);
@@ -72,11 +77,11 @@ async function main() {
         
             // Download all trades into DB
             console.log('DOWNLOAD ALL TRADES');
-            await trades.downloadAllTrades(mysql, page, baseUrl, firstYear, lastYear);
+            await trades.downloadAllTrades(mysql, page, baseUrl, settings.firstYear, settings.lastYear);
         
             // Download all draft results into DB
             console.log('DOWNLOAD ALL DRAFT RESULTS');
-            await draft.downloadAllDraftResults(mysql, page, baseUrl, firstYear, lastYear);
+            await draft.downloadAllDraftResults(mysql, page, baseUrl, settings.firstYear, settings.lastYear);
         }
         else {
             console.log('UNABLE TO SIGN INTO NFL.com. Check screenshot to see if login page has changed.');
