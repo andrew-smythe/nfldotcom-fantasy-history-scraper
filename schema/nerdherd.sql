@@ -99,6 +99,7 @@ DROP TABLE IF EXISTS `rosterpositions`;
 CREATE TABLE `rosterpositions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `position` varchar(45) DEFAULT NULL,
+  `order` int NULL
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
